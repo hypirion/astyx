@@ -23,7 +23,7 @@ Now, using Astyx is a piece of cake, really:
 ```clj
 (ast/parse "(defn foo [bar baz] (+ bar baz))")
 
-;=> [:paren defn foo [:vector bar baz] [:paren + bar baz]]
+=> [:paren defn foo [:vector bar baz] [:paren + bar baz]]
 ```
 
 ## License
