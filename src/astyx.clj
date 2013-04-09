@@ -4,7 +4,7 @@
 (def ^:private grammar
 "exprs = exps
  <exps> = {exp}
- <exp> = list | ws | vec | map | set | num
+ <exp> = list | ws | vec | map | set | num | string
  list = <'('> exps <')'>
  vec = <'['> exps <']'>
  map = <'{'> exps <'}'>
@@ -15,6 +15,7 @@
  ratio = #'[-+]?[0-9]+/[0-9]+'
  float = #'[-+]?[0-9]+(\\.[0-9]*)?([eE][-+]?[0-9]+)?'
  bigdec = #'[-+]?[0-9]+(\\.[0-9]*)?([eE][-+]?[0-9]+)?M'
+ string = #'\"(\\\"|\\n|\\r|.)*\"'
  <ws> = <#'[\\s,]+'>
 ")
 
