@@ -4,7 +4,8 @@
 (def ^:private grammar
 "exprs = exps
  <exps> = {exp}
- <exp> = list | ws | vec | map | set | num | string
+ <exp> = list | ws | vec | map | set | num
+       | string | regex | comment
  list = <'('> exps <')'>
  vec = <'['> exps <']'>
  map = <'{'> exps <'}'>
@@ -15,7 +16,9 @@
  ratio = #'[-+]?[0-9]+/[0-9]+'
  float = #'[-+]?[0-9]+(\\.[0-9]*)?([eE][-+]?[0-9]+)?'
  bigdec = #'[-+]?[0-9]+(\\.[0-9]*)?([eE][-+]?[0-9]+)?M'
- string = #'\"(\\\"|\\n|\\r|.)*\"'
+ string = #'\"(\\\\\"|[^\"])*\"'
+ regex =  #'#\"(\\\\\"|[^\"])*\"'
+ comment = #';[^\\n\\r]*'
  <ws> = <#'[\\s,]+'>
 ")
 
@@ -24,3 +27,4 @@
 
 (defn parse [string]
   (d string))
+
