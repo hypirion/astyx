@@ -18,8 +18,9 @@
  string = #'\"(\\\\\"|[^\"])*\"'
  regex =  #'#\"(\\\\\"|[^\"])*\"'
  comment = #';[^\\n\\r]*'
- <literal> = anfn | unquote | unquote-splice | meta | var
+ <literal> = anfn | unquote | unquote-splice | meta | var | quote
  anfn = '#' list
+ quote = '\\'' ws? exp
  unquote = <'~'> ws? exp
  unquote-splice = <'~@'> ws? exp
  meta = <'^'> ws? exp
