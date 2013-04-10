@@ -19,15 +19,16 @@
  regex =  #'#\"(\\\\\"|[^\"])*\"'
  comment = #';[^\\n\\r]*'
  <literal> = anfn | unquote | unquote-splice | meta
-           | var | quote | symbol | char
+           | var | quote | symbol | keyword | char
  anfn = '#' list
  quote = '\\'' ws? exp
  unquote = <'~'> ws? exp
  unquote-splice = <'~@'> ws? exp
  meta = <'^'> ws? exp
  var = <'#\\''> ws? exp
- symbol = #'[^@~(),\\\\;`\\[\\]{}~^\\s:#/\\'\\d](:?[^@~(),\\\\;`\\[\\]{}~^\\s:])*[^@~(),\\\\;`\\[\\]{}~^\\s:/]'
-        | '/' | 'clojure.core/'
+ symbol = sym-pat | '/' | 'clojure.core/'
+ keyword = ':' ':'? sym-pat
+ <sym-pat> = #'[^@~(),\\\\;`\\[\\]{}~^\\s:#/\\'\\d](:?[^@~(),\\\\;`\\[\\]{}~^\\s:])*[^@~(),\\\\;`\\[\\]{}~^\\s:/]' 
  char = #'\\\\(newline|space|tab|backspace|formfeed|return|.|\\n)'
  <ws> = <#'[\\s,]+'>
 ")
