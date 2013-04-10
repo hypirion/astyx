@@ -18,13 +18,15 @@
  string = #'\"(\\\\\"|[^\"])*\"'
  regex =  #'#\"(\\\\\"|[^\"])*\"'
  comment = #';[^\\n\\r]*'
- <literal> = anfn | unquote | unquote-splice | meta | var | quote
+ <literal> = anfn | unquote | unquote-splice | meta | var | quote | symbol
  anfn = '#' list
  quote = '\\'' ws? exp
  unquote = <'~'> ws? exp
  unquote-splice = <'~@'> ws? exp
  meta = <'^'> ws? exp
  var = <'#\\''> ws? exp
+ symbol = #'[^@~(),\\\\;`\\[\\]{}~^\\s:#/\\'\\d](:?[^@~(),\\\\;`\\[\\]{}~^\\s:])*[^@~(),\\\\;`\\[\\]{}~^\\s:/]'
+        | '/' | 'clojure.core/'
  <ws> = <#'[\\s,]+'>
 ")
 
@@ -33,4 +35,5 @@
 
 (defn parse [string]
   (d string))
+
 
