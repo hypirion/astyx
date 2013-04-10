@@ -1,4 +1,4 @@
-(defproject astyx "0.1.0-SNAPSHOT"
+(defproject astyx "1.0.0-SNAPSHOT"
   :description "Get abstract syntax trees from Clojure code."
   :url "https://github.com/hyPiRion/astyx"
   :license {:name "Eclipse Public License"

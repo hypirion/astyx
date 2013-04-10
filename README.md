@@ -1,15 +1,18 @@
 # Astyx
 
 A Clojure library with one thing in mind: Returning abstract syntax trees from
-Clojure programs.
+Clojure expressions.
 
 ## Quickstart
 
 To use Astyx, simply add the following file to your Leiningen dependencies:
 
 ```clj
-[astyx "1.0.0-SNAPSHOT"] ;; Working on the real deal
+[astyx "1.0.0-SNAPSHOT"]
 ```
+
+Keep in mind that Astyx is currently in heavy development and changes will occur
+rather rapidly.
 
 Then, in a file where you need to fetch the AST of a Clojure snippet:
 
@@ -18,12 +21,18 @@ Then, in a file where you need to fetch the AST of a Clojure snippet:
   (:require [astyx :as ast]))
 ```
 
-Now, using Astyx is a piece of cake, really:
+Now, using Astyx is rather straightforward:
 
 ```clj
 (ast/parse "(defn foo [bar baz] (+ bar baz))")
 
-=> [:paren defn foo [:vector bar baz] [:paren + bar baz]]
+=> [:exprs [:list [:symbol "defn"]
+                  [:symbol "foo"]
+                  [:vec [:symbol "bar"]
+                      [:symbol "baz"]]
+                  [:list [:symbol "+"]
+                         [:symbol "bar"]
+                         [:symbol "baz"]]]]
 ```
 
 ## License
