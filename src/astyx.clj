@@ -33,10 +33,7 @@
  <ws> = <#'[\\s,]+'>
 ")
 
-(def ^:private d
+(def parse
   (insta/parser grammar))
-
-(defn parse [string]
-  (d string))
 
 
